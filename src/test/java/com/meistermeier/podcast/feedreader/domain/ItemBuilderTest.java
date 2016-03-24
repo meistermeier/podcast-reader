@@ -63,6 +63,6 @@ public class ItemBuilderTest {
         assertThat(item.getDescription().get(), equalTo("description"));
         assertThat(item.getLink().get(), equalTo("link"));
         assertThat(item.getPubDate().get(), equalTo(now));
-//        assertThat(item.getEnclosure().get(), equalTo(enclosure));
+        assertThat(item.getEnclosure().get(), equalTo(enclosure));
     }
 }

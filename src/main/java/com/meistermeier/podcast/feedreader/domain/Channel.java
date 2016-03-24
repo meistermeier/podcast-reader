@@ -82,4 +82,28 @@ public class Channel {
         return items;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Channel channel = (Channel) o;
+
+        if (!title.equals(channel.title))
+            return false;
+        if (!link.equals(channel.link))
+            return false;
+        return description.equals(channel.description);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result = 31 * result + link.hashCode();
+        result = 31 * result + description.hashCode();
+        return result;
+    }
 }

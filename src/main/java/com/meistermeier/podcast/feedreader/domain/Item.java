@@ -67,4 +67,34 @@ public class Item {
         return Optional.ofNullable(enclosure);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Item item = (Item) o;
+
+        if (title != null ? !title.equals(item.title) : item.title != null)
+            return false;
+        if (link != null ? !link.equals(item.link) : item.link != null)
+            return false;
+        if (pubDate != null ? !pubDate.equals(item.pubDate) : item.pubDate != null)
+            return false;
+        if (description != null ? !description.equals(item.description) : item.description != null)
+            return false;
+        return enclosure != null ? enclosure.equals(item.enclosure) : item.enclosure == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (link != null ? link.hashCode() : 0);
+        result = 31 * result + (pubDate != null ? pubDate.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (enclosure != null ? enclosure.hashCode() : 0);
+        return result;
+    }
 }

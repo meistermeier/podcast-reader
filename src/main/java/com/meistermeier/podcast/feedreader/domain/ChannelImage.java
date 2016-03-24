@@ -42,4 +42,28 @@ public class ChannelImage {
         return link;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        ChannelImage that = (ChannelImage) o;
+
+        if (!url.equals(that.url))
+            return false;
+        if (!title.equals(that.title))
+            return false;
+        return link.equals(that.link);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = url.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + link.hashCode();
+        return result;
+    }
 }

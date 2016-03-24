@@ -49,4 +49,29 @@ public class Enclosure {
                 ", type='" + type + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Enclosure enclosure = (Enclosure) o;
+
+        if (!url.equals(enclosure.url))
+            return false;
+        if (!length.equals(enclosure.length))
+            return false;
+        return type.equals(enclosure.type);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = url.hashCode();
+        result = 31 * result + length.hashCode();
+        result = 31 * result + type.hashCode();
+        return result;
+    }
 }
