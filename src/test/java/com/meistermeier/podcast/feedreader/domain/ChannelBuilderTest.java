@@ -49,7 +49,7 @@ public class ChannelBuilderTest {
     public void buildSuccessesWithAllData() throws Exception {
         LocalDateTime now = LocalDateTime.now();
         ChannelImage channelImage = new ChannelImage("url", "title", "link");
-        Item item = new Item("title", "link", now, "description", new Enclosure());
+        Item item = new Item("title", "link", now, "description", new Enclosure("url", "length", "type"));
 
         Channel channel = new ChannelBuilder()
                 .title("title")

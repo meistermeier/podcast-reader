@@ -8,7 +8,7 @@ public class ChannelImage {
     private final String title;
     private final String link;
 
-    public ChannelImage(String url, String title, String link) {
+    ChannelImage(String url, String title, String link) {
         this.url = url;
         this.title = title;
         this.link = link;

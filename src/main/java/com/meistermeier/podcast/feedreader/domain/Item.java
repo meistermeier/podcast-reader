@@ -14,7 +14,7 @@ public class Item {
     private final String description;
     private final Enclosure enclosure;
 
-    public Item(String title, String link, LocalDateTime pubDate, String description, Enclosure enclosure) {
+    Item(String title, String link, LocalDateTime pubDate, String description, Enclosure enclosure) {
         this.title = title;
         this.link = link;
         this.pubDate = pubDate;

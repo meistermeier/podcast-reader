@@ -4,9 +4,15 @@ package com.meistermeier.podcast.feedreader.domain;
  * Enclosure element representing the media of an episode
  */
 public class Enclosure {
-    private String url;
-    private String length;
-    private String type;
+    private final String url;
+    private final String length;
+    private final String type;
+
+    Enclosure(String url, String length, String type) {
+        this.url = url;
+        this.length = length;
+        this.type = type;
+    }
 
     /**
      * http url to the provided media. It should be http but it is not checked.
@@ -15,10 +21,6 @@ public class Enclosure {
      */
     public String getUrl() {
         return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
     }
 
     /**
@@ -30,10 +32,6 @@ public class Enclosure {
         return length;
     }
 
-    public void setLength(String length) {
-        this.length = length;
-    }
-
     /**
      * MIME type of the media
      *
@@ -43,7 +41,4 @@ public class Enclosure {
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 }

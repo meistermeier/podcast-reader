@@ -21,11 +21,10 @@ final class ItemInformationProviders {
 
     static InformationProvider<EnclosureProvider> enclosureProvider = (node, builder) -> {
         if ("enclosure".equals(node.getNodeName())) {
-            Enclosure enclosure = new Enclosure();
-            enclosure.setUrl(node.getAttributes().getNamedItem("url").getTextContent());
-            enclosure.setLength(node.getAttributes().getNamedItem("length").getTextContent());
-            enclosure.setType(node.getAttributes().getNamedItem("type").getTextContent());
-            builder.enclosure(enclosure);
+            String url = node.getAttributes().getNamedItem("url").getTextContent();
+            String length = node.getAttributes().getNamedItem("length").getTextContent();
+            String type = node.getAttributes().getNamedItem("type").getTextContent();
+            builder.enclosure(url, length, type);
         }
     };
 

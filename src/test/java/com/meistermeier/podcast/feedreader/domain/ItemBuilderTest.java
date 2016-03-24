@@ -29,20 +29,20 @@ public class ItemBuilderTest {
     @Test
     public void buildSuccessesWithAllData() throws Exception {
         LocalDateTime now = LocalDateTime.now();
-        Enclosure enclosure = new Enclosure();
+        Enclosure enclosure = new Enclosure("url", "length", "type");
 
         Item item = new ItemBuilder()
                 .title("title")
                 .description("description")
                 .link("link")
                 .date(now)
-                .enclosure(enclosure)
+                .enclosure("url", "length", "type")
                 .build();
 
         assertThat(item.getTitle().get(), equalTo("title"));
         assertThat(item.getDescription().get(), equalTo("description"));
         assertThat(item.getLink().get(), equalTo("link"));
         assertThat(item.getPubDate().get(), equalTo(now));
-        assertThat(item.getEnclosure().get(), notNullValue());
+        assertThat(item.getEnclosure().get(), equalTo(enclosure));
     }
 }

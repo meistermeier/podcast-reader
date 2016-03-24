@@ -48,8 +48,8 @@ public class ItemBuilder implements TitleProvider, LinkProvider, DateProvider, D
     }
 
     @Override
-    public ItemBuilder enclosure(Enclosure enclosure) {
-        this.enclosure = enclosure;
+    public ItemBuilder enclosure(String url, String length, String type) {
+        this.enclosure = new Enclosure(url, length, type);
         return this;
     }
 }
