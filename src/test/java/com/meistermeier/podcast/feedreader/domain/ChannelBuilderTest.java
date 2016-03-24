@@ -63,8 +63,8 @@ public class ChannelBuilderTest {
         assertThat(channel.getTitle(), equalTo("title"));
         assertThat(channel.getDescription(), equalTo("description"));
         assertThat(channel.getLink(), equalTo("link"));
-        assertThat(channel.getLastBuildDate(), equalTo(now));
-        assertThat(channel.getChannelImage(), equalTo(channelImage));
+        assertThat(channel.getLastBuildDate().get(), equalTo(now));
+        assertThat(channel.getChannelImage().get(), equalTo(channelImage));
         assertThat(channel.getItems().get(0), equalTo(item));
     }
 }

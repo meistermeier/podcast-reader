@@ -1,7 +1,11 @@
 package com.meistermeier.podcast.feedreader.domain;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
+/**
+ * An item represents a podcast entity/episode.
+ */
 public class Item {
 
     private final String title;
@@ -18,24 +22,49 @@ public class Item {
         this.enclosure = enclosure;
     }
 
-    public String getTitle() {
-        return title;
+    /**
+     * The title of the episode. This could be absent, but in that case description has to have content.
+     *
+     * @return item title tag content
+     */
+    public Optional<String> getTitle() {
+        return Optional.ofNullable(title);
     }
 
-    public String getLink() {
-        return link;
+    /**
+     * The link to the episode. Should be a URL but this is not checked.
+     *
+     * @return item link tag content
+     */
+    public Optional<String> getLink() {
+        return Optional.ofNullable(link);
     }
 
-    public LocalDateTime getPubDate() {
-        return pubDate;
+    /**
+     * Time of the episodes publication.
+     *
+     * @return item pubDate tag content
+     */
+    public Optional<LocalDateTime> getPubDate() {
+        return Optional.ofNullable(pubDate);
     }
 
-    public String getDescription() {
-        return description;
+    /**
+     * The description of the episode. This could be absent, but in that case title has to have content.
+     *
+     * @return item description tag content
+     */
+    public Optional<String> getDescription() {
+        return Optional.ofNullable(description);
     }
 
-    public Enclosure getEnclosure() {
-        return enclosure;
+    /**
+     * The enclosure represents meta information and a link to the media provided within this episode.
+     *
+     * @return enclosure object encapsulating information about the media.
+     */
+    public Optional<Enclosure> getEnclosure() {
+        return Optional.ofNullable(enclosure);
     }
 
 }

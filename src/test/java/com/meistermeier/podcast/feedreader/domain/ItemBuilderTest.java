@@ -39,10 +39,10 @@ public class ItemBuilderTest {
                 .enclosure(enclosure)
                 .build();
 
-        assertThat(item.getTitle(), equalTo("title"));
-        assertThat(item.getDescription(), equalTo("description"));
-        assertThat(item.getLink(), equalTo("link"));
-        assertThat(item.getPubDate(), equalTo(now));
-        assertThat(item.getEnclosure(), notNullValue());
+        assertThat(item.getTitle().get(), equalTo("title"));
+        assertThat(item.getDescription().get(), equalTo("description"));
+        assertThat(item.getLink().get(), equalTo("link"));
+        assertThat(item.getPubDate().get(), equalTo(now));
+        assertThat(item.getEnclosure().get(), notNullValue());
     }
 }
