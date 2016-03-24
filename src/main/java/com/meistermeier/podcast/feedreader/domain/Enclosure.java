@@ -41,4 +41,12 @@ public class Enclosure {
         return type;
     }
 
+    @Override
+    public String toString() {
+        return "Enclosure{" +
+                "url='" + url + '\'' +
+                ", length='" + length + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

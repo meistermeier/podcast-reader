@@ -13,14 +13,26 @@ public class ItemBuilder implements TitleProvider, LinkProvider, DateProvider, D
     private Enclosure enclosure;
 
     public Item build() throws FeedParserException {
-        checkRequiredFields(title, description);
+        checkRequiredFields();
         return new Item(title, link, pubDate, description, enclosure);
     }
 
-    private void checkRequiredFields(String title, String description) throws FeedParserException {
-        if (title == null && description == null) {
+    private void checkRequiredFields() throws FeedParserException {
+        if (titleAndDescriptionAreMissing(title, description)) {
             throw new FeedParserException("Title and description are null. At least one of both must be present.");
         }
+        if (enclosureHasMissingFields()) {
+            throw new FeedParserException("The enclosure exists but has missing fields: " + enclosure);
+        }
+    }
+
+    private boolean enclosureHasMissingFields() {
+        return enclosure != null
+                && (enclosure.getLength() == null || enclosure.getUrl() == null || enclosure.getType() == null);
+    }
+
+    private boolean titleAndDescriptionAreMissing(String title, String description) {
+        return title == null && description == null;
     }
 
     @Override
