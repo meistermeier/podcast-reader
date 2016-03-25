@@ -2,6 +2,10 @@
 
 Simple library for parsing rss podcast feeds.
 
+== Build
+
+image::https://travis-ci.org/meistermeier/podcast-reader.svg?branch=master[]
+
 == Usage
 
 To parse a feed just call `PodcastFeed#getChannel(inputStream)`. You will get a `Channel` object back that represents
