@@ -43,6 +43,15 @@ public class ChannelImage {
     }
 
     @Override
+    public String toString() {
+        return "ChannelImage{" +
+                "url='" + url + '\'' +
+                ", title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

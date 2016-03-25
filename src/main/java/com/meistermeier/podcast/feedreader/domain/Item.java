@@ -68,6 +68,16 @@ public class Item {
     }
 
     @Override
+    public String toString() {
+        return "Item{" +
+                "title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", pubDate=" + pubDate +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o)
             return true;

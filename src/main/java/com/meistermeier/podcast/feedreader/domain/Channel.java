@@ -2,6 +2,7 @@ package com.meistermeier.podcast.feedreader.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public class Channel {
         this.lastBuildDate = lastBuildDate;
         this.channelImage = channelImage;
 
-        this.items.addAll(items.stream().collect(Collectors.toList()));
+        this.items.addAll(items != null ? items.stream().collect(Collectors.toList()) : Collections.EMPTY_LIST);
     }
 
     /**
@@ -80,6 +81,16 @@ public class Channel {
      */
     public List<Item> getItems() {
         return items;
+    }
+
+    @Override
+    public String toString() {
+        return "Channel{" +
+                "title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", description='" + description + '\'' +
+                ", lastBuildDate=" + lastBuildDate +
+                '}';
     }
 
     @Override
