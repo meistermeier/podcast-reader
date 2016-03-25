@@ -1,0 +1,13 @@
+= Podcast Feed Parser Lib
+
+Simple library for parsing rss podcast feeds.
+
+== Usage
+
+To parse a feed just call `PodcastFeed#getChannel(inputStream)`. You will get a `Channel` object back that represents
+ the channel and all items elements.
+
+== Todo
+
+* Documentation (e.g. adding more information to this readme.)
+* Support more tags and fields
