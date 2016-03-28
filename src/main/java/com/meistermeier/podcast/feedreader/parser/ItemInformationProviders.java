@@ -1,25 +1,16 @@
 package com.meistermeier.podcast.feedreader.parser;
 
-import com.meistermeier.podcast.feedreader.domain.Enclosure;
 import com.meistermeier.podcast.feedreader.domain.EnclosureProvider;
+import com.meistermeier.podcast.feedreader.domain.ItemBuilder;
 
-import java.util.Collections;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.dateProvider;
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.descriptionProvider;
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.linkProvider;
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.titleProvider;
+import static com.meistermeier.podcast.feedreader.parser.InformationProviders.DATE_PROVIDER;
+import static com.meistermeier.podcast.feedreader.parser.InformationProviders.DESCRIPTION_PROVIDER;
+import static com.meistermeier.podcast.feedreader.parser.InformationProviders.LINK_PROVIDER;
+import static com.meistermeier.podcast.feedreader.parser.InformationProviders.TITLE_PROVIDER;
 
 final class ItemInformationProviders {
 
-    private ItemInformationProviders() {
-
-    }
-
-    static InformationProvider<EnclosureProvider> enclosureProvider = (node, builder) -> {
+    private static final InformationProvider<EnclosureProvider> ENCLOSURE_PROVIDER = (node, builder) -> {
         if ("enclosure".equals(node.getNodeName())) {
             String url = node.getAttributes().getNamedItem("url").getTextContent();
             String length = node.getAttributes().getNamedItem("length").getTextContent();
@@ -28,11 +19,17 @@ final class ItemInformationProviders {
         }
     };
 
-    static Set<InformationProvider> ITEM_INFORMATION_PROVIDERS = Collections.unmodifiableSet(
-            Stream.of(titleProvider,
-                    descriptionProvider,
-                    dateProvider,
-                    linkProvider,
-                    enclosureProvider)
-                    .collect(Collectors.toSet()));
+    static final ParserCollection<ItemBuilder> PARSERS = new ParserCollection<>();
+
+    static {
+        PARSERS.add(TITLE_PROVIDER);
+        PARSERS.add(DESCRIPTION_PROVIDER);
+        PARSERS.add(DATE_PROVIDER);
+        PARSERS.add(LINK_PROVIDER);
+        PARSERS.add(ENCLOSURE_PROVIDER);
+    }
+
+    private ItemInformationProviders() {
+
+    }
 }

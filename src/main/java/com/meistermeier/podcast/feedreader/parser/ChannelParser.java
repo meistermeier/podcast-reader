@@ -20,9 +20,10 @@ final class ChannelParser {
         NodeList childNodes = channelElement.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node item = childNodes.item(i);
-            for (InformationProvider informationProvider : ChannelInformationProviders.CHANNEL_INFORMATION_PROVIDERS) {
-                informationProvider.addInformation(item, channelBuilder);
+            for (InformationProvider<? super ChannelBuilder> provider : ChannelInformationProviders.PARSERS.providers) {
+                provider.addInformation(item, channelBuilder);
             }
+
         }
 
         return channelBuilder.build();

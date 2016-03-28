@@ -6,6 +6,8 @@ import com.meistermeier.podcast.feedreader.domain.ChannelImageBuilder;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import static com.meistermeier.podcast.feedreader.parser.ChannelImageInformationProviders.PARSERS;
+
 final class ChannelImageParser {
 
     private ChannelImageParser() {
@@ -17,7 +19,7 @@ final class ChannelImageParser {
         NodeList childNodes = imageNode.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node item = childNodes.item(i);
-            for (InformationProvider provider : ChannelImageInformationProviders.CHANNEL_IMAGE_INFORMATION_PROVIDERS) {
+            for (InformationProvider<? super ChannelImageBuilder> provider : PARSERS.providers) {
                 provider.addInformation(item, builder);
             }
         }

@@ -11,25 +11,25 @@ final class InformationProviders {
 
     }
 
-    static InformationProvider<TitleProvider> titleProvider = (node, builder) -> {
+    static final InformationProvider<TitleProvider> TITLE_PROVIDER = (node, builder) -> {
         if ("title".equals(node.getNodeName())) {
             builder.title(node.getTextContent());
         }
     };
 
-    static InformationProvider<DescriptionProvider> descriptionProvider = (node, builder) -> {
+    static final InformationProvider<DescriptionProvider> DESCRIPTION_PROVIDER = (node, builder) -> {
         if ("description".equals(node.getNodeName())) {
             builder.description(node.getTextContent());
         }
     };
 
-    static InformationProvider<DateProvider> dateProvider = (node, builder) -> {
+    static final InformationProvider<DateProvider> DATE_PROVIDER = (node, builder) -> {
         if ("lastBuildDate".equals(node.getNodeName()) || "pubDate".equals(node.getNodeName())) {
             builder.date(PodcastDate.parsePodcastDate(node.getTextContent()));
         }
     };
 
-    static InformationProvider<LinkProvider> linkProvider = (node, builder) -> {
+    static final InformationProvider<LinkProvider> LINK_PROVIDER = (node, builder) -> {
         if ("link".equals(node.getNodeName())) {
             builder.link(node.getTextContent());
         }

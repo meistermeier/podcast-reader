@@ -6,6 +6,8 @@ import com.meistermeier.podcast.feedreader.domain.ItemBuilder;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import static com.meistermeier.podcast.feedreader.parser.ItemInformationProviders.PARSERS;
+
 final class ItemParser {
 
     private ItemParser() {
@@ -18,7 +20,7 @@ final class ItemParser {
         NodeList childNodes = node.getChildNodes();
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node item = childNodes.item(i);
-            for (InformationProvider informationProvider : ItemInformationProviders.ITEM_INFORMATION_PROVIDERS) {
+            for (InformationProvider<? super ItemBuilder> informationProvider : PARSERS.providers) {
                 informationProvider.addInformation(item, itemBuilder);
             }
         }
