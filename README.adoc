@@ -1,6 +1,7 @@
 = Podcast Feed Parser Lib
 
-Simple library for parsing rss podcast feeds.
+Simple library for parsing rss podcast feeds. It may be a tiny little bit over-engineered solution but check out
+the goals to understand the intention.
 
 == Build
 
@@ -13,7 +14,7 @@ To parse a feed just call `PodcastFeed#getChannel(inputStream)`. You will get a 
 
 == ToDo
 
-* Documentation (e.g. adding more information to this readme.)
+* Documentation
 * Support more tags and fields
 
 == (private) goals
@@ -21,6 +22,6 @@ To parse a feed just call `PodcastFeed#getChannel(inputStream)`. You will get a 
 Since this lib solves a simple use case I try to focus aspects:
 
 * The right visibility / access level of components
-    ** Don't confuse the user with too much possibilities
+    ** Only expose what should be used to the api user
 * Test / test coverage
-* (elegant) solution with vanilla Java
+* elegant (in a totally subjective way) solution with vanilla Java
