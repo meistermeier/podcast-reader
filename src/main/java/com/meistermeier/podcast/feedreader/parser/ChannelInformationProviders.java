@@ -4,10 +4,13 @@ import com.meistermeier.podcast.feedreader.domain.ChannelBuilder;
 import com.meistermeier.podcast.feedreader.domain.ChannelImageProvider;
 import com.meistermeier.podcast.feedreader.domain.ItemProvider;
 
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.DESCRIPTION_PROVIDER;
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.TITLE_PROVIDER;
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.meistermeier.podcast.feedreader.parser.InformationProviders.DATE_PROVIDER;
+import static com.meistermeier.podcast.feedreader.parser.InformationProviders.DESCRIPTION_PROVIDER;
 import static com.meistermeier.podcast.feedreader.parser.InformationProviders.LINK_PROVIDER;
+import static com.meistermeier.podcast.feedreader.parser.InformationProviders.TITLE_PROVIDER;
 
 final class ChannelInformationProviders {
 
@@ -23,7 +26,7 @@ final class ChannelInformationProviders {
         }
     };
 
-    static final ParserCollection<ChannelBuilder> PARSERS = new ParserCollection<>();
+    final static List<InformationProvider<? super ChannelBuilder>> PARSERS = new ArrayList<>();
 
     static {
         PARSERS.add(TITLE_PROVIDER);

@@ -3,6 +3,9 @@ package com.meistermeier.podcast.feedreader.parser;
 import com.meistermeier.podcast.feedreader.domain.EnclosureProvider;
 import com.meistermeier.podcast.feedreader.domain.ItemBuilder;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.meistermeier.podcast.feedreader.parser.InformationProviders.DATE_PROVIDER;
 import static com.meistermeier.podcast.feedreader.parser.InformationProviders.DESCRIPTION_PROVIDER;
 import static com.meistermeier.podcast.feedreader.parser.InformationProviders.LINK_PROVIDER;
@@ -19,7 +22,7 @@ final class ItemInformationProviders {
         }
     };
 
-    static final ParserCollection<ItemBuilder> PARSERS = new ParserCollection<>();
+    final static List<InformationProvider<? super ItemBuilder>> PARSERS = new ArrayList<>();
 
     static {
         PARSERS.add(TITLE_PROVIDER);

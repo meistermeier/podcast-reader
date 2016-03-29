@@ -3,9 +3,10 @@ package com.meistermeier.podcast.feedreader.parser;
 import com.meistermeier.podcast.feedreader.common.FeedParserException;
 import com.meistermeier.podcast.feedreader.domain.Channel;
 import com.meistermeier.podcast.feedreader.domain.ChannelBuilder;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+
+import static com.meistermeier.podcast.feedreader.parser.ChannelInformationProviders.PARSERS;
+import static com.meistermeier.podcast.feedreader.parser.InformationProviders.addInformationToBuilder;
 
 final class ChannelParser {
 
@@ -13,20 +14,13 @@ final class ChannelParser {
 
     }
 
-    static Channel createChannel(Element channelElement) throws FeedParserException {
+    static Channel createChannel(Node node) throws FeedParserException {
 
-        ChannelBuilder channelBuilder = new ChannelBuilder();
+        ChannelBuilder builder = new ChannelBuilder();
 
-        NodeList childNodes = channelElement.getChildNodes();
-        for (int i = 0; i < childNodes.getLength(); i++) {
-            Node item = childNodes.item(i);
-            for (InformationProvider<? super ChannelBuilder> provider : ChannelInformationProviders.PARSERS.providers) {
-                provider.addInformation(item, channelBuilder);
-            }
+        addInformationToBuilder(node, builder, PARSERS);
 
-        }
-
-        return channelBuilder.build();
+        return builder.build();
     }
 
 }

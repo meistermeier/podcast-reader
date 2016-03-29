@@ -3,6 +3,9 @@ package com.meistermeier.podcast.feedreader.parser;
 import com.meistermeier.podcast.feedreader.domain.ChannelImageBuilder;
 import com.meistermeier.podcast.feedreader.domain.UrlProvider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.meistermeier.podcast.feedreader.parser.InformationProviders.LINK_PROVIDER;
 import static com.meistermeier.podcast.feedreader.parser.InformationProviders.TITLE_PROVIDER;
 
@@ -14,7 +17,7 @@ final class ChannelImageInformationProviders {
         }
     };
 
-    static final ParserCollection<ChannelImageBuilder> PARSERS = new ParserCollection<>();
+    final static List<InformationProvider<? super ChannelImageBuilder>> PARSERS = new ArrayList<>();
 
     static {
         PARSERS.add(TITLE_PROVIDER);
