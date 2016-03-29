@@ -1,6 +1,10 @@
 package com.meistermeier.podcast.feedreader.domain;
 
-public class ChannelImageBuilder implements TitleProvider, LinkProvider, UrlProvider {
+import com.meistermeier.podcast.feedreader.domain.attribute.LinkAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.TitleAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.UrlAttribute;
+
+public class ChannelImageBuilder implements TitleAttribute, LinkAttribute, UrlAttribute {
     private String url;
     private String title;
     private String link;

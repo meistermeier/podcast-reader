@@ -1,13 +1,20 @@
 package com.meistermeier.podcast.feedreader.domain;
 
 import com.meistermeier.podcast.feedreader.common.FeedParserException;
+import com.meistermeier.podcast.feedreader.domain.attribute.ChannelImageAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.DateAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.DescriptionAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.ItemAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.LinkAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.TitleAttribute;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChannelBuilder
-        implements TitleProvider, LinkProvider, DescriptionProvider, DateProvider, ItemProvider, ChannelImageProvider {
+        implements TitleAttribute, LinkAttribute, DescriptionAttribute, DateAttribute, ItemAttribute,
+        ChannelImageAttribute {
     private String title;
     private String link;
     private String description;

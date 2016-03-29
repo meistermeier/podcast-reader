@@ -1,10 +1,16 @@
 package com.meistermeier.podcast.feedreader.domain;
 
 import com.meistermeier.podcast.feedreader.common.FeedParserException;
+import com.meistermeier.podcast.feedreader.domain.attribute.DateAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.DescriptionAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.EnclosureAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.LinkAttribute;
+import com.meistermeier.podcast.feedreader.domain.attribute.TitleAttribute;
 
 import java.time.LocalDateTime;
 
-public class ItemBuilder implements TitleProvider, LinkProvider, DateProvider, DescriptionProvider, EnclosureProvider {
+public class ItemBuilder implements TitleAttribute, LinkAttribute, DateAttribute, DescriptionAttribute,
+        EnclosureAttribute {
 
     private String title;
     private String link;

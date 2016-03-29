@@ -5,8 +5,8 @@ import com.meistermeier.podcast.feedreader.domain.ChannelImage;
 import com.meistermeier.podcast.feedreader.domain.ChannelImageBuilder;
 import org.w3c.dom.Node;
 
-import static com.meistermeier.podcast.feedreader.parser.ChannelImageInformationProviders.PARSERS;
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.addInformationToBuilder;
+import static com.meistermeier.podcast.feedreader.parser.ChannelImageNodeProcessors.PROCESSORS;
+import static com.meistermeier.podcast.feedreader.parser.NodeProcessors.processNode;
 
 final class ChannelImageParser {
 
@@ -17,7 +17,7 @@ final class ChannelImageParser {
     static ChannelImage createChannelImage(Node node) throws FeedParserException {
         ChannelImageBuilder builder = new ChannelImageBuilder();
 
-        addInformationToBuilder(node, builder, PARSERS);
+        processNode(node, builder, PROCESSORS);
 
         return builder.build();
     }

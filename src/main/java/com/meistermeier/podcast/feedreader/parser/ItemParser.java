@@ -5,8 +5,8 @@ import com.meistermeier.podcast.feedreader.domain.Item;
 import com.meistermeier.podcast.feedreader.domain.ItemBuilder;
 import org.w3c.dom.Node;
 
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.addInformationToBuilder;
-import static com.meistermeier.podcast.feedreader.parser.ItemInformationProviders.PARSERS;
+import static com.meistermeier.podcast.feedreader.parser.NodeProcessors.processNode;
+import static com.meistermeier.podcast.feedreader.parser.ItemNodeProcessors.PARSERS;
 
 final class ItemParser {
 
@@ -17,7 +17,7 @@ final class ItemParser {
     static Item createItem(Node node) throws FeedParserException {
         ItemBuilder builder = new ItemBuilder();
 
-        addInformationToBuilder(node, builder, PARSERS);
+        processNode(node, builder, PARSERS);
 
         return builder.build();
     }

@@ -5,8 +5,8 @@ import com.meistermeier.podcast.feedreader.domain.Channel;
 import com.meistermeier.podcast.feedreader.domain.ChannelBuilder;
 import org.w3c.dom.Node;
 
-import static com.meistermeier.podcast.feedreader.parser.ChannelInformationProviders.PARSERS;
-import static com.meistermeier.podcast.feedreader.parser.InformationProviders.addInformationToBuilder;
+import static com.meistermeier.podcast.feedreader.parser.ChannelNodeProcessors.PROCESSORS;
+import static com.meistermeier.podcast.feedreader.parser.NodeProcessors.processNode;
 
 final class ChannelParser {
 
@@ -18,7 +18,7 @@ final class ChannelParser {
 
         ChannelBuilder builder = new ChannelBuilder();
 
-        addInformationToBuilder(node, builder, PARSERS);
+        processNode(node, builder, PROCESSORS);
 
         return builder.build();
     }

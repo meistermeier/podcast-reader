@@ -3,11 +3,11 @@ package com.meistermeier.podcast.feedreader.parser;
 import com.meistermeier.podcast.feedreader.UtilClassTestingUtils;
 import org.junit.Test;
 
-public class ChannelInformationProvidersUtilClassTest {
+public class ChannelImageNodeProcessorsUtilClassTest {
 
     @Test
     public void isAnUtilClass() throws Exception {
-        UtilClassTestingUtils.assertClassIsUtilClass(ChannelInformationProviders.class);
+        UtilClassTestingUtils.assertClassIsUtilClass(ChannelImageNodeProcessors.class);
     }
 
 }
