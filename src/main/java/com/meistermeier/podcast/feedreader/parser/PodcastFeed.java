@@ -23,7 +23,6 @@ public class PodcastFeed {
     public Channel getChannel(InputStream feedStream) throws FeedParserException {
         // http://cyber.law.harvard.edu/rss/rss.html there must be only one channel element
         Element firstChild = new FeedDocumentParser(feedStream).getFirstFunctionalChild();
-        return ChannelParser.createChannel(firstChild);
-
+        return ChannelParser.newInstance().create(firstChild);
     }
 }

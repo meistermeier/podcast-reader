@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ChannelBuilder
         implements TitleAttribute, LinkAttribute, DescriptionAttribute, DateAttribute, ItemAttribute,
-        ChannelImageAttribute {
+        ChannelImageAttribute, Builder<Channel> {
     private String title;
     private String link;
     private String description;

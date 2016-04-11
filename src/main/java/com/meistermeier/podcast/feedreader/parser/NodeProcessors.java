@@ -16,30 +16,41 @@ final class NodeProcessors {
 
     }
 
-    static final NodeProcessor<TitleAttribute> TITLE_PROCESSOR = (node, builder) -> {
-        if ("title".equals(node.getNodeName())) {
-            builder.title(node.getTextContent());
+    static final class TitleProcessor implements NodeProcessor<TitleAttribute> {
+        @Override
+        public void process(Node node, TitleAttribute builder) throws FeedParserException {
+            if ("title".equals(node.getNodeName())) {
+                builder.title(node.getTextContent());
+            }
         }
-    };
+    }
 
-    static final NodeProcessor<DescriptionAttribute> DESCRIPTION_PROCESSOR = (node, builder) -> {
-        if ("description".equals(node.getNodeName())) {
-            builder.description(node.getTextContent());
+    static final class DescriptionProcessor implements NodeProcessor<DescriptionAttribute>  {
+        @Override
+        public void process(Node node, DescriptionAttribute builder) throws FeedParserException {
+            if ("description".equals(node.getNodeName())) {
+                builder.description(node.getTextContent());
+            }
         }
-    };
+    }
 
-    static final NodeProcessor<DateAttribute> DATE_PROCESSOR = (node, builder) -> {
-        if ("lastBuildDate".equals(node.getNodeName()) || "pubDate".equals(node.getNodeName())) {
-            builder.date(PodcastDate.parsePodcastDate(node.getTextContent()));
+    static final class DateProcessor implements NodeProcessor<DateAttribute>{
+        @Override
+        public void process(Node node, DateAttribute builder) throws FeedParserException {
+            if ("lastBuildDate".equals(node.getNodeName()) || "pubDate".equals(node.getNodeName())) {
+                builder.date(PodcastDate.parsePodcastDate(node.getTextContent()));
+            }
         }
-    };
+    }
 
-    static final NodeProcessor<LinkAttribute> LINK_PROCESSOR = (node, builder) -> {
-        if ("link".equals(node.getNodeName())) {
-            builder.link(node.getTextContent());
+    static final class LinkProcessor implements NodeProcessor<LinkAttribute> {
+        @Override
+        public void process(Node node, LinkAttribute builder) throws FeedParserException {
+            if ("link".equals(node.getNodeName())) {
+                builder.link(node.getTextContent());
+            }
         }
-    };
-
+    }
 
     static <T> void processNode(Node node, T builder, List<NodeProcessor<? super T>> processors)
             throws FeedParserException {
@@ -49,9 +60,8 @@ final class NodeProcessors {
         for (int i = 0; i < childNodes.getLength(); i++) {
             Node item = childNodes.item(i);
             for (NodeProcessor<? super T> processor : processors) {
-                processor.addInformation(item, builder);
+                processor.process(item, builder);
             }
         }
     }
 }
-
